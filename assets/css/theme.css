@@ -137,14 +137,14 @@ h6 {
   z-index: 1030;
   min-height: var(--st-header-height);
   border-bottom: 1px solid transparent;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.08);
   transition: background-color var(--st-transition), border-color var(--st-transition), box-shadow var(--st-transition), backdrop-filter var(--st-transition);
 }
 
 .site-header.is-scrolled,
 .site-header:has(.navbar-collapse.show) {
   border-bottom-color: var(--st-border-soft);
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(0,0,0, 0.94);
   box-shadow: 0 10px 32px rgba(46, 60, 84, 0.09);
   backdrop-filter: blur(14px);
 }
@@ -156,7 +156,7 @@ h6 {
 
 .site-header .navbar-brand {
   padding: 0;
-  color: var(--st-heading);
+  color: #FFFFFF;
   font-family: var(--st-font-heading);
   font-size: 1.875rem;
   font-weight: 400;
@@ -428,6 +428,7 @@ h6 {
   min-height: 794px;
   padding: 140px 0 100px;
   overflow: hidden;
+  background: #020202;
 }
 
 .hero-section--intro {
@@ -514,8 +515,8 @@ h6 {
   margin-bottom: 20px;
   padding: 6px 18px;
   border-radius: 50rem;
-  background: rgba(7, 84, 217, 0.1);
-  color: var(--st-primary);
+  background: #e02721;
+  color: #ffffff;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.035em;
@@ -530,12 +531,13 @@ h6 {
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.035em;
+  color: #ffffff;
 }
 
 .hero-lead {
   max-width: 540px;
   margin-bottom: 32px;
-  color: rgba(115, 119, 124, 0.75);
+  color: rgba(255,255,255, 0.75);
   font-size: 1.05rem;
   line-height: 1.8;
 }
