@@ -167,7 +167,12 @@ h6 {
 .site-header .navbar-brand:hover {
   color: var(--st-heading);
 }
-
+#brand-logo {
+  width: min(320px, 40dvw);
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
 .site-header .nav-link {
   position: relative;
   display: flex;
