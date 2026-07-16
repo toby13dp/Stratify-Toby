@@ -17,31 +17,30 @@ concurrency:
 
 jobs:
   build:
-    name: Validate and build
+    name: Build Pages artifact
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
+      - name: Validate deployment inputs
+        run: |
+          test -f index.html
+          test -f assets/css/theme.css
+          test -f assets/js/theme.js
+          test -f assets/vendor/bootstrap/css/bootstrap.min.css
+          test -f assets/vendor/bootstrap/js/bootstrap.bundle.min.js
+          test -f assets/vendor/gsap/gsap.min.js
+          test -f assets/vendor/gsap/ScrollTrigger.min.js
 
-      - name: Install dependencies
-        timeout-minutes: 8
-        run: npm ci --no-audit --no-fund
-        env:
-          NPM_CONFIG_FETCH_RETRIES: 3
-          NPM_CONFIG_FETCH_RETRY_MINTIMEOUT: 1000
-          NPM_CONFIG_FETCH_RETRY_MAXTIMEOUT: 10000
-          NPM_CONFIG_FETCH_TIMEOUT: 60000
-
-      - name: Validate and build website
-        run: npm run quality
+      - name: Build static Pages artifact
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          cp -R assets _site/assets
+          touch _site/.nojekyll
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
@@ -49,7 +48,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./dist
+          path: ./_site
 
   deploy:
     name: Deploy
