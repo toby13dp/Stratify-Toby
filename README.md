@@ -63,7 +63,9 @@ De publiceerbare bestanden verschijnen in `dist/`. De build gebruikt relatieve p
 
 ## GitHub Pages-deployment
 
-De workflow in `.github/workflows/deploy-pages.yml` valideert en bouwt de website bij iedere push naar `main` en publiceert daarna uitsluitend de inhoud van `dist/` naar GitHub Pages.
+De workflow in `.github/workflows/deploy-pages.yml` controleert bij iedere push naar `main` de vereiste HTML-, CSS-, JavaScript- en vendorbestanden, bouwt daaruit een zelfstandig `_site`-artifact en publiceert dit naar GitHub Pages. De deployment gebruikt uitsluitend de lokaal gebundelde website-assets en is daardoor niet afhankelijk van npm- of CDN-downloads.
+
+De volledige ontwikkel- en productiekwaliteitscontrole blijft beschikbaar via `npm run quality`; deze omvat ook HTML-validatie, DOM-/GSAP-tests en de geoptimaliseerde Vite-build in `dist/`.
 
 De workflow kan ook handmatig worden gestart via **GitHub → Actions → Build and deploy GitHub Pages → Run workflow**.
 
